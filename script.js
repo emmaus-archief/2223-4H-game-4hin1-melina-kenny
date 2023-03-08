@@ -31,7 +31,11 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function() {
   // speler 1
-
+background('blue');
+  rect(mouseX - 25, mouseY - 25, 50, 50);
+  ellipse(mouseX, mouseY, 10, 10);
+  ellipse(mouseX, mouseY,80,80);
+  mouseX = mouseX + 1;
   // speler 2
 
   // kogel
@@ -62,9 +66,9 @@ var tekenAlles = function() {
   // kogel
 
   // speler 1
-  fill("white");
+fill("white")
   rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
+fill("black")
   ellipse(spelerX, spelerY, 10, 10);
   fill("yellow")
   ellipse(spelerX, spelerY,80,80);
