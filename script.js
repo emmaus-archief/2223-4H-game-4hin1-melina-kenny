@@ -22,6 +22,7 @@ var spelStatus = SPELEN;
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -31,11 +32,23 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function() {
   // speler 1
-background('blue');
-  rect(mouseX - 25, mouseY - 25, 50, 50);
-  ellipse(mouseX, mouseY, 10, 10);
-  ellipse(mouseX, mouseY,80,80);
-  mouseX = mouseX + 1;
+  background('blue');
+if (keyIsDown(LEFT_ARROW)) {
+    spelerX -= 5;
+  }
+   if (keyIsDown(RIGHT_ARROW)) {
+    spelerX += 5;
+  }
+
+  if (keyIsDown(UP_ARROW)) {
+    spelerY -= 5;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    spelerY += 5;
+  }
+
+  
   // speler 2
 
   // kogel
