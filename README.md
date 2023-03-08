@@ -17,4 +17,5 @@ https://emmauscollege.github.io/informatica/game/
         https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
 - icon <br>
         http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
-- ...
+  - stap 1 bolletje(speler1) getekend
+  - stap 2 speler1 beweging met pijltjes van toetsenbord
