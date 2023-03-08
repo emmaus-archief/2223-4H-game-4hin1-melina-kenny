@@ -30,9 +30,9 @@ var spelerY = 600; // y-positie van speler
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function() {
-  // speler
+  // speler 1
 
-  // vijand
+  // speler 2
 
   // kogel
 };
@@ -57,15 +57,17 @@ var verwerkBotsing = function() {
 var tekenAlles = function() {
   // achtergrond
 
-  // vijand
+  // speler 2
 
   // kogel
 
-  // speler
+  // speler 1
   fill("white");
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
+  fill("yellow")
+  ellipse(spelerX, spelerY,80,80);
 
   // punten en health
 
