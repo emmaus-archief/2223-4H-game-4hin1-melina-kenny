@@ -51,9 +51,17 @@ if (keyIsDown(LEFT_ARROW)) {
 
   
   // speler 2
+  if (Moveleft = useKeyPress('a'))
+  {speler1 -= 5;}
+if (MoveUp = useKeyPress('w'))
+{speler1 += 5;}
+if (MoveDown = useKeyPress('s'))
+{speler2 -= 5;}
+if (MoveRight = useKeyPress('d'))
+  {speler2 += 5;}
 
   // kogel
-};
+
 
 /**
  * Checkt botsingen
@@ -77,9 +85,9 @@ var tekenAlles = function() {
 
   // speler 2
 fill("black")
-  ellipse(speler1,speler2,50,50);
+  ellipse(speler1, speler2, 50, 50);
   fill("purple")
-  ellipse(speler1, speler2,100,100);
+  ellipse(speler1, speler2, 100, 100);
   // kogel
 
   // speler 1
