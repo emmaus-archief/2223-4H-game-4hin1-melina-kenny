@@ -21,8 +21,8 @@ var spelStatus = SPELEN;
 
 var spelerX = 50; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var speler1 = 100;
-var speler2 = 250;
+var speler1 = 100;// x-positie van speler2
+var speler2 = 650;// y-positie van speler2
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -34,7 +34,7 @@ var speler2 = 250;
 var beweegAlles = function() {
   // speler 1
   background('blue');
-if (keyIsDown(LEFT_ARROW)) {
+  if (keyIsDown(LEFT_ARROW)) {
     spelerX -= 5;
   }
    if (keyIsDown(RIGHT_ARROW)) {
@@ -51,14 +51,24 @@ if (keyIsDown(LEFT_ARROW)) {
 
   
   // speler 2
-  if (Moveleft = useKeyPress('a'))
-  {speler1 -= 5;}
-if (MoveUp = useKeyPress('w'))
-{speler1 += 5;}
-if (MoveDown = useKeyPress('s'))
-{speler2 -= 5;}
-if (MoveRight = useKeyPress('d'))
-  {speler2 += 5;}
+  background('blue');
+  //a
+   if (keyIsDown(65)){
+  speler1 = speler1 -=1; 
+  }
+  //d
+   if (keyIsDown(68)){
+  speler1 = speler1 +=1; 
+  }
+  //w
+   if (keyIsDown(87)){
+  speler2 = speler2 -=1; 
+  }
+  //s 
+   if (keyIsDown(83)){
+  speler2 = speler2 +=1; 
+  }
+}
 
   // kogel
 
@@ -99,7 +109,6 @@ fill("black")
   ellipse(spelerX, spelerY,80,80);
 
   // punten en health
-
 };
 
 /**
@@ -125,7 +134,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('achtergrond.jpeg');
+  background('blue');
 }
 
 /**
@@ -142,8 +151,6 @@ function draw() {
       spelStatus = GAMEOVER;
     }
   }
-  if (spelStatus === GAMEOVER) {
+  if (spelStatus === GAMEOVER) {}
     // teken game-over scherm
-
-  }
 }
