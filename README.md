@@ -17,13 +17,14 @@ https://emmauscollege.github.io/informatica/game/
         https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
 - icon <br>
         http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
-  - stap 1 bolletje(speler1) getekend
-  - stap 2 speler1 beweging met pijltjes van toetsenbord
-  - stap 3 bolletje (speler) 2 getekend
-  - stap 4 speler 2 beweging met de letters AWSD
-  - stap 5 spelers van grootte veranderd 
-  - stap 6 inspiratie levels opgezocht
+  - [x] stap 1 bolletje(speler1) getekend
+  - [x] stap 2 speler1 beweging met pijltjes van toetsenbord
+  - [x] stap 3 bolletje (speler) 2 getekend
+  - [x] stap 4 speler 2 beweging met de letters AWSD
+  - [x] stap 5 spelers van grootte veranderd 
+  - [x] stap 6 inspiratie levels opgezocht
   - stap 7 puntensysteem gemaakt 
   - stap 8 levels bedacht 
   - stap 9 sleutels als punten
-  - stap 10 achtergond van spel veranderen 
+  - stap 10 achtergond van spel veranderen
+  - [x] stap 11 botsingdetecteren

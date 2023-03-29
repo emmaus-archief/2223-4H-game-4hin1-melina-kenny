@@ -17,12 +17,16 @@
 /* ********************************************* */
 const SPELEN = 1;
 const GAMEOVER = 2;
+const UITLEG = 8;
 var spelStatus = SPELEN;
 
-var spelerX = 50; // x-positie van speler
-var spelerY = 600; // y-positie van speler
+var spelerX = 100; // x-positie van speler
+var spelerY = 650; // y-positie van speler
 var speler1 = 100;// x-positie van speler2
 var speler2 = 650;// y-positie van speler2
+
+var vijandX = 600; // x-positie van vijand
+var vijandY = 500; // y-positie van vijand
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -54,22 +58,27 @@ var beweegAlles = function() {
   background('blue');
   //a
    if (keyIsDown(65)){
-  speler1 = speler1 -=1; 
+  speler1 = speler1 -=5; 
   }
   //d
    if (keyIsDown(68)){
-  speler1 = speler1 +=1; 
+  speler1 = speler1 +=5; 
   }
   //w
    if (keyIsDown(87)){
-  speler2 = speler2 -=1; 
+  speler2 = speler2 -=5; 
   }
   //s 
    if (keyIsDown(83)){
-  speler2 = speler2 +=1; 
+  speler2 = speler2 +=5; 
   }
-}
 
+// vijand
+background('blue');
+fill ("red");
+rect(vijandX - 25, vijandY - 25, 50, 50);
+
+}
   // kogel
 
 
@@ -80,7 +89,22 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
+if(spelerX - vijandX < 50 &&
+  spelerX - vijandX >-50 &&
+  spelerY - vijandY <50 &&
+  spelerY - vijandY > -50)  {
+  aantal = aantal + 1
+  console.log("Botsing"+ aantal);
+  }
 
+if(speler1 - vijandX < 50 &&
+   speler1 - vijandX >-50 &&
+  speler2 - vijandY <50 &&
+   speler2 - vijandY > -50) {
+  aantal = aantal + 1
+  console.log("Botsing"+ aantal);
+  }
+  
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -94,10 +118,12 @@ var tekenAlles = function() {
   // achtergrond
 
   // speler 2
+  fill("white")
+  rect(speler1 - 25, speler2 - 25, 50, 50);
 fill("black")
-  ellipse(speler1, speler2, 50, 50);
+  ellipse(speler1, speler2, 10, 10);
   fill("purple")
-  ellipse(speler1, speler2, 100, 100);
+  ellipse(speler1, speler2, 80, 80);
   // kogel
 
   // speler 1
@@ -106,7 +132,10 @@ fill("white")
 fill("black")
   ellipse(spelerX, spelerY, 10, 10);
   fill("yellow")
-  ellipse(spelerX, spelerY,80,80);
+  ellipse(spelerX, spelerY, 80, 80);
+
+  // vijand
+  
 
   // punten en health
 };
@@ -134,7 +163,11 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+
+background('blue');
+
+
+
 }
 
 /**
@@ -150,7 +183,14 @@ function draw() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
+    console.log("game over");
   }
-  if (spelStatus === GAMEOVER) {}
+  if (spelStatus === GAMEOVER) {
+    console.log("game over");
+  }
     // teken game-over scherm
+  if (spelStatus === UITLEG) {
+    console.log("uitleg");
+  }
+  
 }
