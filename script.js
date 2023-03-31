@@ -145,6 +145,7 @@ fill("black")
  * anders return false
  */
 var checkGameOver = function() {
+  
   // check of HP 0 is , of tijd op is, of ...
   return false;
 };
@@ -183,10 +184,13 @@ function draw() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
-    console.log("game over");
+    console.log("spelen");
   }
   if (spelStatus === GAMEOVER) {
     console.log("game over");
+    textSize(50);
+    fill("white");
+    text("game over", 100, 100);
   }
     // teken game-over scherm
   if (spelStatus === UITLEG) {
