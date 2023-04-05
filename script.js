@@ -191,6 +191,8 @@ function draw() {
     textSize(50);
     fill("white");
     text("game over", 100, 100);
+    if (keyIsDown(32)) {
+    spelStatus = UITLEG; }
   }
     // teken game-over scherm
   if (spelStatus === UITLEG) {
