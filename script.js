@@ -19,7 +19,7 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 8;
 var spelStatus = SPELEN;
-
+var aantal = 0;
 var spelerX = 100; // x-positie van speler
 var spelerY = 650; // y-positie van speler
 var speler1 = 100;// x-positie van speler2
@@ -116,7 +116,10 @@ if(speler1 - vijandX < 50 &&
  */
 var tekenAlles = function() {
   // achtergrond
-
+background('blue');
+fill ("red");
+rect(vijandX - 25, vijandY - 25, 50, 50);
+   
   // speler 2
   fill("white")
   rect(speler1 - 25, speler2 - 25, 50, 50);
@@ -145,7 +148,14 @@ fill("black")
  * anders return false
  */
 var checkGameOver = function() {
-  
+   if(spelerX - vijandX < 50 &&
+  spelerX - vijandX >-50 &&
+  spelerY - vijandY <50 &&
+  spelerY - vijandY > -50)  {
+  aantal = aantal + 1
+  console.log("Botsing"+ aantal)
+    return true;
+  }
   // check of HP 0 is , of tijd op is, of ...
   return false;
 };
@@ -176,6 +186,8 @@ background('blue');
  * de code in deze functie wordt 50 keer per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
+  
+}
 function draw() {
   if (spelStatus === SPELEN) {
     beweegAlles();
@@ -186,17 +198,27 @@ function draw() {
     }
     console.log("spelen");
   }
+  
   if (spelStatus === GAMEOVER) {
+    //teken game-over scherm
     console.log("game over");
     textSize(50);
     fill("white");
-    text("game over", 100, 100);
-    if (keyIsDown(32)) {
+    text("game over druk spatie voor start", 100, 100);
+    if (keyIsDown(32)) {//spatie 
     spelStatus = UITLEG; }
+   
   }
-    // teken game-over scherm
   if (spelStatus === UITLEG) {
+    // teken uitleg scherm
     console.log("uitleg");
+    
+    textSize(50);
+    fill("white");
+    text("doe je ding, druk op enter", 100, 100);
+    if (keyIsDown(13)) {//enter
+    spelStatus = SPELEN; }
+   
   }
   
 }
