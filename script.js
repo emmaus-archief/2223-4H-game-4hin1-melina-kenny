@@ -18,6 +18,7 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 8;
+const KEY_SPACE = 32;
 var spelStatus = SPELEN;
 var aantal = 0;
 var spelerX = 100; // x-positie van speler
@@ -27,6 +28,11 @@ var speler2 = 650;// y-positie van speler2
 
 var vijandX = 600; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
+
+var spelerSpringt = false;
+var springSnelheid = 2; 
+var springSnelheidStart = 4;
+var zwaartekracht = 0.2;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -49,7 +55,14 @@ var beweegAlles = function() {
     spelerY -= 5;
   }
 
-  
+  if(keyIsDown(KEY_SPACE)){
+    spelerSpringt = true;
+  }
+  if (spelerSpringt === true); {
+spelerY = spelerY - springSnelheid;
+    springSnelheid = springSnelheid - 0.2;
+    
+  }
 
   
   // speler 2
@@ -208,8 +221,8 @@ function draw() {
     console.log("game over");
     textSize(50);
     fill("white");
-    text("game over druk spatie voor start", 100, 100);
-    if (keyIsDown(32)) {//spatie 
+    text("game over druk enter voor start", 100, 100);
+    if (keyIsDown(13)) {//wenter 
       spelerX = 100;
       spelerY = 650;
       speler1 = 150;
