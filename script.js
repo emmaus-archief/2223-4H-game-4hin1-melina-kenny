@@ -113,6 +113,8 @@ if(speler1 - vijandX < 50 &&
 var tekenAlles = function() {
   // achtergrond
 background('blue');
+  fill("green");
+  rect(0,690,1500,700);
 fill ("red");
 rect(vijandX - 25, vijandY - 25, 50, 50);
    
@@ -178,12 +180,9 @@ function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
 
+  
   // Kleur de achtergrond blauw, zodat je het kunt zien
-
 background('blue');
-
-
-
 }
 
 /**
@@ -211,18 +210,16 @@ function draw() {
     fill("white");
     text("game over druk spatie voor start", 100, 100);
     if (keyIsDown(32)) {//spatie 
-    spelStatus = UITLEG; }
+      spelerX = 100;
+      spelerY = 650;
+      speler1 = 150;
+      speler2 = 650;
+    spelStatus = SPELEN; }
    
   }
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
-    
-    textSize(50);
-    fill("white");
-    text("doe je ding, druk op enter", 100, 100);
-    if (keyIsDown(13)) {//enter
-    spelStatus = SPELEN; }
    
   }
   
