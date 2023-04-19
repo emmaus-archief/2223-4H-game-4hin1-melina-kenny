@@ -49,9 +49,7 @@ var beweegAlles = function() {
     spelerY -= 5;
   }
 
-  if (keyIsDown(DOWN_ARROW)) {
-    spelerY += 5;
-  }
+  
 
   
   // speler 2
@@ -69,9 +67,7 @@ var beweegAlles = function() {
   speler2 = speler2 -=5; 
   }
   //s 
-   if (keyIsDown(83)){
-  speler2 = speler2 +=5; 
-  }
+  
 
 // vijand
 background('blue');
@@ -98,9 +94,9 @@ if(spelerX - vijandX < 50 &&
   }
 
 if(speler1 - vijandX < 50 &&
-   speler1 - vijandX >-50 &&
+  speler1 - vijandX >-50 &&
   speler2 - vijandY <50 &&
-   speler2 - vijandY > -50) {
+  speler2 - vijandY > -50) {
   aantal = aantal + 1
   console.log("Botsing"+ aantal);
   }
@@ -156,6 +152,15 @@ var checkGameOver = function() {
   console.log("Botsing"+ aantal)
     return true;
   }
+  
+if(speler1 - vijandX < 50 &&
+  speler1 - vijandX >-50 &&
+  speler2 - vijandY <50 &&
+  speler2 - vijandY > -50) {
+  aantal = aantal + 1
+  console.log("Botsing"+ aantal);
+  return true;
+  }
   // check of HP 0 is , of tijd op is, of ...
   return false;
 };
@@ -187,7 +192,7 @@ background('blue');
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
   
-}
+
 function draw() {
   if (spelStatus === SPELEN) {
     beweegAlles();
