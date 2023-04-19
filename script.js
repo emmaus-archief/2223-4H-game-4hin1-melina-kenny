@@ -18,21 +18,33 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 8;
-const KEY_SPACE = 32;
+const UP_ARROW = 38;
 var spelStatus = SPELEN;
 var aantal = 0;
+
+var vloerY = 650;
+
 var spelerX = 100; // x-positie van speler
-var spelerY = 650; // y-positie van speler
+var spelerY = vloerY; // y-positie van speler
 var speler1 = 100;// x-positie van speler2
-var speler2 = 650;// y-positie van speler2
+var speler2 = vloerY;// y-positie van speler2
 
 var vijandX = 600; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
 
 var spelerSpringt = false;
-var springSnelheid = 2; 
-var springSnelheidStart = 4;
+var springSnelheid = 0; 
+var springSnelheidStart = 8;
 var zwaartekracht = 0.2;
+
+var spelerSpringt2 = false;
+var springSnelheid2 = 0;
+var springSnelheidStart2 = 8;
+var zwaartekracht2 = 0.2; 
+
+var img; 
+var img2;
+var img3;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -51,22 +63,23 @@ var beweegAlles = function() {
     spelerX += 5;
   }
 
-  if (keyIsDown(UP_ARROW)) {
-    spelerY -= 5;
-  }
-
-  if(keyIsDown(KEY_SPACE)){
+  if (spelerSpringt === false && keyIsDown(UP_ARROW)) {
+    spelerY = spelerY - springSnelheid;
     spelerSpringt = true;
+    springSnelheid = springSnelheidStart;
   }
-  if (spelerSpringt === true); {
+  
+  if (spelerSpringt === true) {
 spelerY = spelerY - springSnelheid;
-    springSnelheid = springSnelheid - 0.2;
-    
+    springSnelheid = springSnelheid - zwaartekracht; 
+  }
+  if (spelerY > 650) {
+    spelerSpringt = false;
   }
 
   
   // speler 2
-  background('blue');
+ 
   //a
    if (keyIsDown(65)){
   speler1 = speler1 -=5; 
@@ -75,15 +88,25 @@ spelerY = spelerY - springSnelheid;
    if (keyIsDown(68)){
   speler1 = speler1 +=5; 
   }
-  //w
-   if (keyIsDown(87)){
-  speler2 = speler2 -=5; 
+//w
+   if (spelerSpringt2 === false && keyIsDown(87)) {
+    speler2 = speler2 - springSnelheid2;
+    spelerSpringt2 = true;
+    springSnelheid2 = springSnelheidStart2;
+  }
+  
+  if (spelerSpringt2 === true) {
+speler2 = speler2 - springSnelheid2;
+    springSnelheid2 = springSnelheid2 - zwaartekracht2; 
+  }
+  if (speler2 > 650) {
+    spelerSpringt2 = false;
   }
   //s 
   
 
 // vijand
-background('blue');
+
 fill ("red");
 rect(vijandX - 25, vijandY - 25, 50, 50);
 
@@ -125,28 +148,21 @@ if(speler1 - vijandX < 50 &&
  */
 var tekenAlles = function() {
   // achtergrond
-background('blue');
+background(143,188,240);
   fill("green");
   rect(0,690,1500,700);
 fill ("red");
 rect(vijandX - 25, vijandY - 25, 50, 50);
    
   // speler 2
-  fill("white")
-  rect(speler1 - 25, speler2 - 25, 50, 50);
-fill("black")
-  ellipse(speler1, speler2, 10, 10);
-  fill("purple")
-  ellipse(speler1, speler2, 80, 80);
+  
+ image(img2, speler1-100, speler2-100, 140, 140);
+
   // kogel
 
   // speler 1
-fill("white")
-  rect(spelerX - 25, spelerY - 25, 50, 50);
-fill("black")
-  ellipse(spelerX, spelerY, 10, 10);
-  fill("yellow")
-  ellipse(spelerX, spelerY, 80, 80);
+
+  image(img, spelerX-100, spelerY-100, 140, 140);
 
   // vijand
   
@@ -183,7 +199,12 @@ if(speler1 - vijandX < 50 &&
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
+function preload() {
+  img = loadImage('min.png');
+  img2 = loadImage('gru.png');
+  img3 = loadImage('blad.png');
 
+}
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
@@ -194,8 +215,8 @@ function setup() {
   createCanvas(1280, 720);
 
   
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-background('blue');
+  
+background(143,188,240);
 }
 
 /**
@@ -221,8 +242,9 @@ function draw() {
     console.log("game over");
     textSize(50);
     fill("white");
-    text("game over druk enter voor start", 100, 100);
-    if (keyIsDown(13)) {//wenter 
+    image(img3, 350, 10, 650, 650);
+    
+    if (keyIsDown(32)) {//spatie
       spelerX = 100;
       spelerY = 650;
       speler1 = 150;
