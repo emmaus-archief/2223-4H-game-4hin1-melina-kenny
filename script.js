@@ -40,7 +40,7 @@ var zwaartekracht = 0.2;
 var spelerSpringt2 = false;
 var springSnelheid2 = 0;
 var springSnelheidStart2 = 8;
-var zwaartekracht2 = 0.2; 
+var zwaartekracht2 = 0.3; 
 
 var img; 
 var img2;
@@ -94,21 +94,21 @@ spelerY = spelerY - springSnelheid;
     spelerSpringt2 = true;
     springSnelheid2 = springSnelheidStart2;
   }
-  
+  //s
   if (spelerSpringt2 === true) {
 speler2 = speler2 - springSnelheid2;
     springSnelheid2 = springSnelheid2 - zwaartekracht2; 
   }
-  if (speler2 > 650) {
+  if (speler2 > 498) {
     spelerSpringt2 = false;
   }
-  //s 
+   
   
 
 // vijand
 
 fill ("red");
-rect(vijandX - 25, vijandY - 25, 50, 50);
+rect(vijandX - 250, vijandY - 250, 50, 50);
 
 }
   // kogel
@@ -152,7 +152,15 @@ background(143,188,240);
   fill("green");
   rect(0,690,1500,700);
 fill ("red");
-rect(vijandX - 25, vijandY - 25, 50, 50);
+rect(vijandX - 60, vijandY - 20, 250, 40);
+  fill("gray");
+  rect(vijandX + 350, vijandY + 30, 250, 40)
+  
+   fill("gray");
+  rect(vijandX + 130, vijandY - 150, 250, 40)
+   
+  fill("gray");
+  rect(vijandX -430, vijandY - 100, 250, 40)
    
   // speler 2
   
