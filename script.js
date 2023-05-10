@@ -33,16 +33,16 @@ var vijandX = 600; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
 
 var spelerSpringt = false;
-var springSnelheid = 0; 
+var springSnelheid = 0;
 var springSnelheidStart = 8;
 var zwaartekracht = 0.2;
 
 var spelerSpringt2 = false;
 var springSnelheid2 = 0;
 var springSnelheidStart2 = 8;
-var zwaartekracht2 = 0.3; 
+var zwaartekracht2 = 0.3;
 
-var img; 
+var img;
 var img2;
 var img3;
 
@@ -59,7 +59,7 @@ var beweegAlles = function() {
   if (keyIsDown(LEFT_ARROW)) {
     spelerX -= 5;
   }
-   if (keyIsDown(RIGHT_ARROW)) {
+  if (keyIsDown(RIGHT_ARROW)) {
     spelerX += 5;
   }
 
@@ -68,50 +68,50 @@ var beweegAlles = function() {
     spelerSpringt = true;
     springSnelheid = springSnelheidStart;
   }
-  
+
   if (spelerSpringt === true) {
-spelerY = spelerY - springSnelheid;
-    springSnelheid = springSnelheid - zwaartekracht; 
+    spelerY = spelerY - springSnelheid;
+    springSnelheid = springSnelheid - zwaartekracht;
   }
-  if (spelerY > 650) {
+  if (spelerY > 498) {
     spelerSpringt = false;
   }
 
-  
+
   // speler 2
- 
+
   //a
-   if (keyIsDown(65)){
-  speler1 = speler1 -=5; 
+  if (keyIsDown(65)) {
+    speler1 = speler1 -= 5;
   }
   //d
-   if (keyIsDown(68)){
-  speler1 = speler1 +=5; 
+  if (keyIsDown(68)) {
+    speler1 = speler1 += 5;
   }
-//w
-   if (spelerSpringt2 === false && keyIsDown(87)) {
+  //w
+  if (spelerSpringt2 === false && keyIsDown(87)) {
     speler2 = speler2 - springSnelheid2;
     spelerSpringt2 = true;
     springSnelheid2 = springSnelheidStart2;
   }
   //s
   if (spelerSpringt2 === true) {
-speler2 = speler2 - springSnelheid2;
-    springSnelheid2 = springSnelheid2 - zwaartekracht2; 
+    speler2 = speler2 - springSnelheid2;
+    springSnelheid2 = springSnelheid2 - zwaartekracht2;
   }
   if (speler2 > 498) {
     spelerSpringt2 = false;
   }
-   
-  
 
-// vijand
 
-fill ("red");
-rect(vijandX - 250, vijandY - 250, 50, 50);
+
+  // vijand
+
+  fill("red");
+  rect(vijandX - 250, vijandY - 250, 50, 50);
 
 }
-  // kogel
+// kogel
 
 
 /**
@@ -121,22 +121,22 @@ rect(vijandX - 250, vijandY - 250, 50, 50);
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-if(spelerX - vijandX < 50 &&
-  spelerX - vijandX >-50 &&
-  spelerY - vijandY <50 &&
-  spelerY - vijandY > -50)  {
-  aantal = aantal + 1
-  console.log("Botsing"+ aantal);
+  if (spelerX - vijandX < 50 &&
+    spelerX - vijandX > - 50 &&
+    spelerY - vijandY < 50 &&
+    spelerY - vijandY > - 50) {
+    aantal = aantal + 1
+    console.log("Botsing" + aantal);
   }
 
-if(speler1 - vijandX < 50 &&
-  speler1 - vijandX >-50 &&
-  speler2 - vijandY <50 &&
-  speler2 - vijandY > -50) {
-  aantal = aantal + 1
-  console.log("Botsing"+ aantal);
+  if (speler1 - vijandX < 50 &&
+    speler1 - vijandX > -50 &&
+    speler2 - vijandY < 50 &&
+    speler2 - vijandY > -50) {
+    aantal = aantal + 1
+    console.log("Botsing" + aantal);
   }
-  
+
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -144,36 +144,35 @@ if(speler1 - vijandX < 50 &&
 };
 
 /**
- * Tekent spelscherm
+ * Tekent spelscherm    
  */
 var tekenAlles = function() {
   // achtergrond
-background(143,188,240);
+  background(143, 188, 240);
   fill("green");
-  rect(0,690,1500,700);
-fill ("red");
-rect(vijandX - 60, vijandY - 20, 250, 40);
-  fill("gray");
-  rect(vijandX + 350, vijandY + 30, 250, 40)
-  
-   fill("gray");
-  rect(vijandX + 130, vijandY - 150, 250, 40)
-   
-  fill("gray");
-  rect(vijandX -430, vijandY - 100, 250, 40)
-   
+  rect(0, 690, 1500, 700);
+  fill("red");
+  rect(vijandX - 60, vijandY - 20, 250, 40);
+  fill("green");
+  rect(vijandX + 350, vijandY + 30, 250, 40);
+
+  fill("green");
+  rect(vijandX + 130, vijandY - 150, 250, 40);
+
+  fill("green");
+  rect(vijandX - 430, vijandY - 100, 250, 40);
+
   // speler 2
-  
- image(img2, speler1-100, speler2-100, 140, 140);
+
+  image(img2, speler1 - 100, speler2 - 100, 140, 140);
 
   // kogel
 
   // speler 1
 
-  image(img, spelerX-100, spelerY-100, 140, 140);
+  image(img, spelerX - 100, spelerY - 100, 140, 140);
 
   // vijand
-  
 
   // punten en health
 };
@@ -183,22 +182,22 @@ rect(vijandX - 60, vijandY - 20, 250, 40);
  * anders return false
  */
 var checkGameOver = function() {
-   if(spelerX - vijandX < 50 &&
-  spelerX - vijandX >-50 &&
-  spelerY - vijandY <50 &&
-  spelerY - vijandY > -50)  {
-  aantal = aantal + 1
-  console.log("Botsing"+ aantal)
+  if (spelerX - vijandX < 50 &&
+    spelerX - vijandX > -50 &&
+    spelerY - vijandY < 50 &&
+    spelerY - vijandY > -50) {
+    aantal = aantal + 1
+    console.log("Botsing" + aantal)
     return true;
   }
-  
-if(speler1 - vijandX < 50 &&
-  speler1 - vijandX >-50 &&
-  speler2 - vijandY <50 &&
-  speler2 - vijandY > -50) {
-  aantal = aantal + 1
-  console.log("Botsing"+ aantal);
-  return true;
+
+  if (speler1 - vijandX < 50 &&
+    speler1 - vijandX > -50 &&
+    speler2 - vijandY < 50 &&
+    speler2 - vijandY > -50) {
+    aantal = aantal + 1
+    console.log("Botsing" + aantal);
+    return true;
   }
   // check of HP 0 is , of tijd op is, of ...
   return false;
@@ -222,9 +221,9 @@ function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
 
-  
-  
-background(143,188,240);
+
+
+  background(143, 188, 240);
 }
 
 /**
@@ -232,7 +231,7 @@ background(143,188,240);
  * de code in deze functie wordt 50 keer per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
-  
+
 
 function draw() {
   if (spelStatus === SPELEN) {
@@ -244,26 +243,27 @@ function draw() {
     }
     console.log("spelen");
   }
-  
+
   if (spelStatus === GAMEOVER) {
     //teken game-over scherm
     console.log("game over");
     textSize(50);
     fill("white");
     image(img3, 350, 10, 650, 650);
-    
+
     if (keyIsDown(32)) {//spatie
       spelerX = 100;
       spelerY = 650;
       speler1 = 150;
       speler2 = 650;
-    spelStatus = SPELEN; }
-   
+      spelStatus = SPELEN;
+    }
+
   }
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
-   
+
   }
-  
+
 }

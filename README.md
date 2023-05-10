@@ -28,3 +28,11 @@ https://emmauscollege.github.io/informatica/game/
   - stap 9 sleutels als punten
   - stap 10 achtergond van spel veranderen
   - [x] stap 11 botsingdetecteren
+We zijn bij stap 7, maar moeten sneller een speelbaar spel hebben omdat we iets achterlopen, daarom gaan we nu als  volgt verder:
+- [x] al minion of politie rood raakt dan af
+- [ ] als minion groen raakt dan minion wint
+- [ ] als politie minion raakt dan polotie wint
+- [ ]] tijd op het scherm weerdgeven, dat zijn de punten van minion
+
+  uitbreidingen:
+- - springen op de planken
