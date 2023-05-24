@@ -19,6 +19,7 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 8;
 const UP_ARROW = 38;
+
 var spelStatus = SPELEN;
 var aantal = 0;
 
@@ -40,7 +41,7 @@ var zwaartekracht = 0.2;
 var spelerSpringt2 = false;
 var springSnelheid2 = 0;
 var springSnelheidStart2 = 8;
-var zwaartekracht2 = 0.3;
+var zwaartekracht2 = 0.2;
 
 var img;
 var img2;
@@ -73,7 +74,7 @@ var beweegAlles = function() {
     spelerY = spelerY - springSnelheid;
     springSnelheid = springSnelheid - zwaartekracht;
   }
-  if (spelerY > 498) {
+  if (spelerY > 650) {
     spelerSpringt = false;
   }
 
@@ -99,7 +100,7 @@ var beweegAlles = function() {
     speler2 = speler2 - springSnelheid2;
     springSnelheid2 = springSnelheid2 - zwaartekracht2;
   }
-  if (speler2 > 498) {
+  if (speler2 > 650) {
     spelerSpringt2 = false;
   }
 
