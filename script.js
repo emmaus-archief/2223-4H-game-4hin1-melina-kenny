@@ -20,18 +20,19 @@ const GAMEOVER = 2;
 const UITLEG = 8;
 const UP_ARROW = 38;
 
+
 var spelStatus = SPELEN;
 var aantal = 0;
 
 var vloerY = 650;
 
 var spelerX = 100; // x-positie van speler
-var spelerY = vloerY; // y-positie van speler
+var spelerY = 500; // y-positie van speler
 var speler1 = 100;// x-positie van speler2
-var speler2 = vloerY;// y-positie van speler2
+var speler2 = 500;// y-positie van speler2
 
-var vijandX = 600; // x-positie van vijand
-var vijandY = 500; // y-positie van vijand
+var vijandX = 100; // x-positie van vijand
+var vijandY = vloerY; // y-positie van vijand
 
 var spelerSpringt = false;
 var springSnelheid = 0;
@@ -46,6 +47,8 @@ var zwaartekracht2 = 0.2;
 var img;
 var img2;
 var img3;
+var img4;
+var img5;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -56,7 +59,7 @@ var img3;
  */
 var beweegAlles = function() {
   // speler 1
-  background('blue');
+
   if (keyIsDown(LEFT_ARROW)) {
     spelerX -= 5;
   }
@@ -77,6 +80,7 @@ var beweegAlles = function() {
   if (spelerY > 650) {
     spelerSpringt = false;
   }
+  
 
 
   // speler 2
@@ -109,7 +113,7 @@ var beweegAlles = function() {
   // vijand
 
   fill("red");
-  rect(vijandX - 250, vijandY - 250, 50, 50);
+  rect(vijandX - 650, vijandY - 250, 50, 50);
 
 }
 // kogel
@@ -150,18 +154,17 @@ var verwerkBotsing = function() {
 var tekenAlles = function() {
   // achtergrond
   background(143, 188, 240);
+ 
+ 
+  
   fill("green");
-  rect(0, 690, 1500, 700);
-  fill("red");
-  rect(vijandX - 60, vijandY - 20, 250, 40);
-  fill("green");
-  rect(vijandX + 350, vijandY + 30, 250, 40);
+  rect(150, 400, 250, 40);
 
   fill("green");
-  rect(vijandX + 130, vijandY - 150, 250, 40);
+  rect(750, 250, 250, 40);
 
   fill("green");
-  rect(vijandX - 430, vijandY - 100, 250, 40);
+  rect(900, 500, 250, 40);
 
   // speler 2
 
@@ -211,6 +214,8 @@ function preload() {
   img = loadImage('min.png');
   img2 = loadImage('gru.png');
   img3 = loadImage('blad.png');
+  img4 = loadImage('mini.png');
+  img5 = loadImage('grusprong.png');
 
 }
 /**
@@ -254,9 +259,9 @@ function draw() {
 
     if (keyIsDown(32)) {//spatie
       spelerX = 100;
-      spelerY = 650;
-      speler1 = 150;
-      speler2 = 650;
+      spelerY = 500;
+      speler1 = 100;
+      speler2 = 500;
       spelStatus = SPELEN;
     }
 
