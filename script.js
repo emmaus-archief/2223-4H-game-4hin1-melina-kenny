@@ -46,6 +46,7 @@ var zwaartekracht2 = 0.2;
 var img;
 var img2;
 var img3;
+var img4;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -108,8 +109,7 @@ var beweegAlles = function() {
 
   // vijand
 
-  fill("red");
-  rect(vijandX - 250, vijandY - 250, 50, 50);
+ 
 
 }
 // kogel
@@ -151,8 +151,8 @@ var tekenAlles = function() {
   // achtergrond
   background(143, 188, 240);
  
-  fill("red");
-  rect(vijandX - 60, vijandY - 20, 250, 40);
+ 
+ image(img4, vijandX - 100, vijandY - 100, 140, 140);
 
   // speler 2
 
@@ -202,6 +202,7 @@ function preload() {
   img = loadImage('min.png');
   img2 = loadImage('gru.png');
   img3 = loadImage('blad.png');
+  img4 = loadImage('vec.png');
 
 }
 /**
