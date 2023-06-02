@@ -30,10 +30,10 @@ var spelerY = vloerY; // y-positie van speler
 var speler1 = 200;// x-positie van speler2
 var speler2 = vloerY;// y-positie van speler2
 
-var vijandX = 1150; // x-positie van vijand
+var vijandX = 1000; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
 
-var vijandX2 = 800;
+var vijandX2 = 150;
 var vijandY2 = 200;
 
 var spelerSpringt = false;
@@ -49,8 +49,8 @@ var zwaartekracht2 = 0.2;
 var speed= 5;
 var speed2 = 1.5;
 var speed3 = 2.5;
-var speed4 = 2;
-var speed5 = 3;
+var speed4 = 1.5;
+var speed5 = 2.5;
 var score = 0;
 
 var img;
@@ -289,15 +289,15 @@ var reset = function(){
   spelerY= vloerY;
   speler1 = 200;
   speler2 = vloerY;
-  vijandX = 1150;
+  vijandX = 1000;
   vijandY = 500;
-  vijandX2 = 800;
+  vijandX2 = 150;
   vijandY2 = 200;
   score = 0;
   speed2 = 1.5;
   speed3 = 2.5;
-  speed4 = 2;
-  speed5 = 3;
+  speed4 = 1.5;
+  speed5 = 2.5;
   
 }
 
