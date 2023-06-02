@@ -58,7 +58,7 @@ var img2;
 var img3;
 var img4;
 var img5;
-
+var img6;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -123,25 +123,13 @@ var beweegAlles = function() {
   if (vijandX <= 75 || vijandX >= 1200) {
     speed2 = -speed2;
   }
-  if(score >= 10) {
-    speed3 = speed3 + 1
-  }
-
-  if(score >= 11) {
-    speed3 = 4
-  }
+ 
 
    vijandX2 += speed4 * speed5;
   if (vijandX2 <= 75 || vijandX2 >= 1200) {
     speed4 = -speed4;
   }
-  if(score >= 10) {
-    speed5 = speed5 + 1
-  }
-
-  if(score >= 11) {
-    speed5 = 4
-  }
+ 
 }
 // kogel
 
@@ -187,7 +175,7 @@ var verwerkBotsing = function() {
   // botsing kogel tegen vijand
 
   // update punten en health
-
+ score = score +0.02
 };
 
 /**
@@ -216,6 +204,9 @@ var tekenAlles = function() {
   // vijand
 
   // punten en health
+  fill("yellow");
+  textSize(100);
+  text(floor(score), 600,100)
 };
 
 /**
@@ -270,6 +261,7 @@ function preload() {
   img3 = loadImage('afbeeldingen/blad.png');
   img4 = loadImage('afbeeldingen/ufo.gif');
   img5 = loadImage('afbeeldingen/achtergrond.gif');
+  img6 = loadImage('afbeeldingen/beginscherm.png');
  
 
 }
@@ -337,6 +329,7 @@ function draw() {
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
+    image(img6);
 
   }
 
