@@ -77,7 +77,7 @@ var beweegAlles = function() {
   }
 
   if (spelerSpringt === false && keyIsDown(UP_ARROW)) {
-    spelerY = spelerY - springSnelheid;
+    //spelerY = spelerY - springSnelheid;
     spelerSpringt = true;
     springSnelheid = springSnelheidStart;
   }
@@ -103,7 +103,7 @@ var beweegAlles = function() {
   }
   //w
   if (spelerSpringt2 === false && keyIsDown(87)) {
-    speler2 = speler2 - springSnelheid;
+    //speler2 = speler2 - springSnelheid;
     spelerSpringt2 = true;
     springSnelheid2 = springSnelheidStart2;
   }
