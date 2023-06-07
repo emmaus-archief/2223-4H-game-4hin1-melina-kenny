@@ -263,7 +263,7 @@ function preload() {
   img4 = loadImage('afbeeldingen/ufo.gif');
   img5 = loadImage('afbeeldingen/achtergrond.gif');
   img6 = loadImage('afbeeldingen/beginscherm.png');
- 
+ img7 = loadImage('afbeeldingen/Begin.pixil');
 
 }
 /**
@@ -331,7 +331,7 @@ function draw() {
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
-    background("red");
+    image(img7, 350,10, 650,650);
     if (keyIsDown(32)) {
       spelStatus = SPELEN;
     }
