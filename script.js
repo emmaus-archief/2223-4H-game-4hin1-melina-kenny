@@ -60,6 +60,7 @@ var img3;
 var img4;
 var img5;
 var img6;
+var img7;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -263,8 +264,7 @@ function preload() {
   img4 = loadImage('afbeeldingen/ufo.gif');
   img5 = loadImage('afbeeldingen/achtergrond.gif');
   img6 = loadImage('afbeeldingen/beginscherm.png');
- img7 = loadImage('afbeeldingen/Begin.pixil');
-
+  img7 = loadImage('afbeeldingen/banaanpunten.png');
 }
 /**
  * setup
@@ -331,7 +331,7 @@ function draw() {
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
-    image(img7, 350,10, 650,650);
+    image(img6, 350, 10, 650, 650);
     if (keyIsDown(32)) {
       spelStatus = SPELEN;
     }
