@@ -54,6 +54,10 @@ var speed4 = 1.5;
 var speed5 = 2.5;
 var score = 0;
 
+var banaanX = [1000, 1400, 1800, 2200, 2600];
+var banaanY = [500,300,100,200,400];
+var banaangepakt = [false,false,false,false,false];
+
 var img;
 var img2;
 var img3;
@@ -177,6 +181,19 @@ var verwerkBotsing = function() {
   // botsing kogel tegen vijand
 
   // update punten en health
+  for(var i =0; i< banaanY.length; i++){
+    if(
+      spelerX < banaanX[i]+ 50 &&
+    spelerX +  50 > banaanX[i] &&
+    spelerY < banaanY[i] + 50 &&
+ spelerY + 50 > banaanY[i] &&
+      !banaangepakt[i]
+    ) {
+      banaangepakt[i] = true;
+    score++;
+    banaangepakt++;
+    }
+  }
  score = score +0.02
 };
 
@@ -185,9 +202,14 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // achtergrond
-  
   background(img5);
- 
+
+  for(var i =0; i < banaanY.length; i++){
+    if(banaangepakt[i]){
+      image(img7,banaanX[i], banaanY[i],50,50);
+    }
+    
+  }
  
  image(img4, vijandX - 100, vijandY - 100, 200, 140);
 
@@ -310,7 +332,7 @@ function draw() {
     }
     console.log("spelen");
   }
-
+ 
 
   if (spelStatus === GAMEOVER) {
     //teken game-over scherm
