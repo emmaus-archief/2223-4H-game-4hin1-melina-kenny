@@ -199,7 +199,7 @@ var verwerkBotsing = function() {
   // botsing kogel tegen vijand
 
   // update punten en health
-   if (spelerX - banaanX < 50 && @
+   if (spelerX - banaanX < 50 && 
     spelerX - banaanX > -50 &&
     spelerY - banaanY < 50 &&
     spelerY - banaanY > -50) {
@@ -208,7 +208,7 @@ var verwerkBotsing = function() {
     banaanY = random(200, 400)
     console.log('punt');
   }
-    if (speler1 - banaanX < 50 && @
+    if (speler1 - banaanX < 50 && 
     speler1 - banaanX > -50 &&
     speler2 - banaanY < 50 &&
     speler2 - banaanY > -50) {
@@ -249,7 +249,7 @@ image(img7, banaanX - 25, banaanY - 25, 100, 100);
    text("punten: " + banaanpunt , 100, 100);
 };
 //Verhoog de score
-  function Banaangepakt() { @
+  function Banaangepakt() { 
   if (spelerX === banaanX && banaanY === banaanY) {
     banaangeplaatst(); 
      banaanpunt++; 
@@ -383,7 +383,7 @@ function draw() {
       banaanY = random(200, 400)
     }
   }
-  if (spelStatus === UITLEG) { @
+  if (spelStatus === UITLEG) { 
     // teken uitleg scherm
     console.log("uitleg");
     image(img9, 0,0, 1280, 720);
