@@ -54,9 +54,9 @@ var speed4 = 1.5;
 var speed5 = 2.5;
 var score = 0;
 
-var banaanX = [1000, 1400, 1800, 2200, 2600];
-var banaanY = [500, 300,1 00, 200, 400];
-var banaangepakt = [false,false,false,false,false];
+var banaanpunt= 0;
+var banaanX = 500;
+var banaanY = 500;
 
 var img;
 var img2;
@@ -65,6 +65,8 @@ var img4;
 var img5;
 var img6;
 var img7;
+var img8;
+var img9;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -135,8 +137,24 @@ var beweegAlles = function() {
   if (vijandX2 <= 75 || vijandX2 >= 1200) {
     speed4 = -speed4;
   }
- 
-}
+
+   if(score >= 10) {
+    speed3 = speed3 + 0.001
+     speed5 = speed5 + 0.001
+   }
+  if(score >= 30) {
+    speed3 = speed3 + 0.001
+     speed5 = speed5 + 0.001
+   }
+  if(score >= 60) {
+    speed3 = speed3 + 0.001
+     speed5 = speed5 + 0.001
+   }
+  if(score >= 120) {
+    speed3 = speed3 + 0.001
+     speed5 = speed5 + 0.001
+   }
+};
 // kogel
 
 
@@ -181,19 +199,25 @@ var verwerkBotsing = function() {
   // botsing kogel tegen vijand
 
   // update punten en health
-  for(var i =0; i< banaanY.length; i++){
-    if(
-      spelerX < banaanX[i]+ 50 &&
-    spelerX +  50 > banaanX[i] &&
-    spelerY < banaanY[i] + 50 &&
- spelerY + 50 > banaanY[i] &&
-    !banaangepakt[i]
-    ) {
-    banaangepakt[i] = true;
-    score++;
-    banaangepakt++;
-    }
+   if (spelerX - banaanX < 50 && @
+    spelerX - banaanX > -50 &&
+    spelerY - banaanY < 50 &&
+    spelerY - banaanY > -50) {
+    banaanpunt = banaanpunt + 1;
+    banaanX = random(1000, 400)
+    banaanY = random(200, 400)
+    console.log('punt');
   }
+    if (speler1 - banaanX < 50 && @
+    speler1 - banaanX > -50 &&
+    speler2 - banaanY < 50 &&
+    speler2 - banaanY > -50) {
+    banaanpunt = banaanpunt + 1;
+    banaanX = random(1000, 400)
+    banaanY = random(200, 400)
+    console.log('punt');
+  }
+  
  score = score +0.02
 };
 
@@ -203,36 +227,38 @@ var verwerkBotsing = function() {
 var tekenAlles = function() {
   // achtergrond
   background(img5);
-
-  for(var i =0; i < banaanY.length; i++){
-    if(banaangepakt[i]){
-      image(img7,banaanX[i], banaanY[i],50,50);
-    }
-    
-  }
  
  image(img4, vijandX - 100, vijandY - 100, 200, 140);
 
   image(img4, vijandX2 - 100, vijandY2 - 100, 200, 140);
-
-  // speler 2
-
+  // speler
   image(img2, speler1 - 100, speler2 - 100, 140, 140);
-
   // kogel
-
   // speler 1
-
   image(img, spelerX - 100, spelerY - 100, 140, 140);
-
   // vijand
-
   // punten en health
+image(img7, banaanX - 25, banaanY - 25, 100, 100);
+  
   fill("yellow");
   textSize(100);
-  text(floor(score), 600,100)
-};
+  text(floor(score), 600,100);
 
+  fill("blue");
+  textSize(50);
+   text("punten: " + banaanpunt , 100, 100);
+};
+//Verhoog de score
+  function Banaangepakt() { @
+  if (spelerX === banaanX && banaanY === banaanY) {
+    banaangeplaatst(); 
+     banaanpunt++; 
+  if (speler1 === banaanX && banaanY === banaanY) {
+    banaangeplaatst();
+     banaanpunt++;
+  }
+  }
+}
 /**
  * return true als het gameover is
  * anders return false
@@ -276,6 +302,13 @@ var checkGameOver = function() {
   return false;
 };
 
+var CheckVictory = function() {
+  if(banaanpunt <= 10) {
+  return true;
+  }
+  return false;
+  };
+
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
@@ -287,6 +320,8 @@ function preload() {
   img5 = loadImage('afbeeldingen/achtergrond.gif');
   img6 = loadImage('afbeeldingen/beginscherm.png');
   img7 = loadImage('afbeeldingen/banaanpunten.png');
+  img8 = loadImage('afbeeldingen/minions.jpg');
+  img9 = loadImage('afbeeldingen/play.png');
 }
 /**
  * setup
@@ -309,13 +344,13 @@ var reset = function(){
   vijandX2 = 150;
   vijandY2 = 200;
   score = 0;
+  banaanpunt = 0;
   speed2 = 1.5;
   speed3 = 2.5;
   speed4 = 1.5;
   speed5 = 2.5;
   
-}
-
+};
 /**
  * draw
  * de code in deze functie wordt 50 keer per seconde
@@ -330,10 +365,7 @@ function draw() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
-    console.log("spelen");
-  }
- 
-
+};
   if (spelStatus === GAMEOVER) {
     //teken game-over scherm
     console.log("game over");
@@ -347,13 +379,14 @@ function draw() {
       speler1 = 200;
       speler2 = vloerY;
       spelStatus = SPELEN;
+      banaanX = random(1000, 400)
+      banaanY = random(200, 400)
     }
-
   }
-  if (spelStatus === UITLEG) {
+  if (spelStatus === UITLEG) { @
     // teken uitleg scherm
     console.log("uitleg");
-    image(img6, 350, 10, 650, 650);
+    image(img9, 0,0, 1280, 720);
     if (keyIsDown(32)) {
       spelStatus = SPELEN;
     }
@@ -362,10 +395,10 @@ function draw() {
   if (spelStatus === VICTORY){
     // teken win scherm
     console.log("victory");
-    background("white");
-    if (keyIsDown(13)) {
-      spelStatus = UITLEG;
+    image(img8, 350, 10, 650, 650);
+    if (keyIsDown(32)) {
+      banaanpunt = 10;
+      spelStatus = SPELEN;
     }
   }
-
 }
